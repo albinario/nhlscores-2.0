@@ -1,0 +1,13 @@
+.well {
+  background-color: #fff;
+}
+
+img {
+  height: 25px;
+  margin-right: 5px;
+}
+
+.img-small {
+  height: 15px;
+  margin: 0 0 2px -2px;
+}

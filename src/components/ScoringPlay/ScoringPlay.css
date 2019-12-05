@@ -1,0 +1,6 @@
+@media (max-width: 767px) {
+  .scoring-play {
+    font-size: 13px;
+    margin-right: -15px;
+  }
+}
