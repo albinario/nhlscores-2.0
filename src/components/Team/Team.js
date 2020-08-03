@@ -45,7 +45,6 @@ class Team extends Component {
 
   render() {
     // console.log("Team: render() " + this.props.name);
-    console.log('this');
     let showExtra = false;
     if (this.props.playedStatus) {
       if (this.state.extra && this.props.winningTeam === this.props.teamId) {

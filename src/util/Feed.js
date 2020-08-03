@@ -32,8 +32,8 @@ const Feed = {
           }
         } else {
           const gameDate = new Date(game.gameDate);
-          const hh = ('0' + gameDate.getUTCHours()).slice(-2);
-          const mm = ('0' + gameDate.getUTCMinutes()).slice(-2);
+          const hh = ('0' + gameDate.getHours()).slice(-2);
+          const mm = ('0' + gameDate.getMinutes()).slice(-2);
           startTime = hh+':'+mm;
         }
         return {
