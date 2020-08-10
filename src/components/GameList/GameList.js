@@ -5,7 +5,7 @@ class GameList extends Component {
   render() {
     console.log("GameList: render()");
     return (
-      this.props.games.length > 0 ?
+      this.props.games ?
         this.props.games.map((game, index) => {
           return (
             <Game
@@ -15,7 +15,7 @@ class GameList extends Component {
           );
         })
       :
-      <div>
+      <div className="header">
         {this.props.message}
       </div>
     );
