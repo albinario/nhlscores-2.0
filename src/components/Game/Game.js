@@ -28,6 +28,7 @@ class Game extends Component {
             teamId={this.props.game.awayTeamId}
             record={this.props.game.awayRecord}
             score={this.props.game.awayScore}
+            picks={this.props.game.awayPicks}
             playedStatus={this.props.game.playedStatus}
             winningTeam={this.props.game.winningTeam}
             gameId={this.props.game.gameId}
@@ -37,6 +38,7 @@ class Game extends Component {
             teamId={this.props.game.homeTeamId}
             record={this.props.game.homeRecord}
             score={this.props.game.homeScore}
+            picks={this.props.game.homePicks}
             playedStatus={this.props.game.playedStatus}
             winningTeam={this.props.game.winningTeam}
             gameId={this.props.game.gameId}
@@ -69,12 +71,14 @@ class Game extends Component {
                   goalies={this.props.game.awayGoalies}
                   teamId={this.props.game.awayTeamId}
                   gameId={this.props.game.gameId}
+                  picks={this.props.game.awayPicks.filter(pick => pick.pos === "G")}
                   type='away'
                 />
                 <GoalieList
                   goalies={this.props.game.homeGoalies}
                   teamId={this.props.game.homeTeamId}
                   gameId={this.props.game.gameId}
+                  picks={this.props.game.homePicks.filter(pick => pick.pos === "G")}
                   type='home'
                 />
                 <br/>
@@ -85,6 +89,7 @@ class Game extends Component {
                       skaters={this.props.game.awaySkaters}
                       teamId={this.props.game.awayTeamId}
                       gameId={this.props.game.gameId}
+                      picks={this.props.game.awayPicks.filter(pick => pick.pos !== "G")}
                       type='away'
                     />
                     <br/>
@@ -92,6 +97,7 @@ class Game extends Component {
                       skaters={this.props.game.homeSkaters}
                       teamId={this.props.game.homeTeamId}
                       gameId={this.props.game.gameId}
+                      picks={this.props.game.homePicks.filter(pick => pick.pos !== "G")}
                       type='home'
                     />
                   </div>

@@ -23,7 +23,9 @@ class App extends Component {
 
   onDateChange(dateFromHeader) {
     Feed.getGames(dateFromHeader).then(games => {
-      this.setState({games: games})
+      this.setState({
+        games: games
+      })
     });
   }
 

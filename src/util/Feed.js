@@ -1,4 +1,5 @@
 import Connect from './Connect';
+import Picks from './Picks';
 
 const Feed = {
   async getGames(date) {
@@ -44,11 +45,13 @@ const Feed = {
           homeScore: game.teams.home.score,
           homeGoalies: homeGoalies,
           homeSkaters: homeSkaters,
+          homePicks: Picks.filter(pick => pick.team === game.teams.home.team.id),
           awayTeamId: game.teams.away.team.id,
           awayRecord: awayRecord,
           awayScore: game.teams.away.score,
           awayGoalies: awayGoalies,
           awaySkaters: awaySkaters,
+          awayPicks: Picks.filter(pick => pick.team === game.teams.away.team.id),
           playedStatus: playedStatus,
           scoringPlays: scoringPlays,
           winningTeam: winningTeam
@@ -116,6 +119,14 @@ const Feed = {
   getLogo(teamId) {
     if (teamId) {
       return 'https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/'+teamId+'.svg';
+    }
+  },
+  isPicked(playerId) {
+    const pick = Picks.filter(pick => pick.id === playerId)[0];
+    if (pick) {
+      return ' '+pick.picker;
+    } else {
+      return '';
     }
   }
 }

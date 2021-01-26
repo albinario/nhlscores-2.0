@@ -13,6 +13,7 @@ class GoalieList extends Component {
               goalieId={goalieId}
               teamId={this.props.teamId}
               gameId={this.props.gameId}
+              picks={this.props.picks.filter(pick => pick.id === goalieId)}
               type={this.props.type}
             />
           )

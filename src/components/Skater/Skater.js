@@ -53,7 +53,7 @@ class Skater extends Component {
     return (
       <div className="row text-center">
         <div className="col-xs-1 text-right">{this.state.jersey}</div>
-        <div className="col-xs-4 col-sm-2 text-left"><span className="hidden-xs hidden-sm">{this.state.fullName}</span><span className="hidden-md hidden-lg">{this.state.lastName}</span></div>
+        <div className="col-xs-4 col-sm-3 col-md-2 text-left"><span className="hidden-xs hidden-sm">{this.state.fullName}</span><span className="hidden-md hidden-lg">{this.state.lastName}</span> <span className="pick">{this.props.picks.map(pick => pick.picker)}</span></div>
         <div className="col-xs-1">{this.state.goals}</div>
         <div className="col-xs-1">{this.state.assists}</div>
         <div className="col-xs-1">{(this.state.plusMinus > 0) ? '+' : '' }{this.state.plusMinus}</div>

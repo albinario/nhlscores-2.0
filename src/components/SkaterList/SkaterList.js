@@ -9,7 +9,7 @@ class SkaterList extends Component {
       <div>
         <div className="row text-center small">
           <div className="col-xs-1"></div>
-          <div className="col-xs-4 col-sm-2 text-left"><img src={Feed.getLogo(this.props.teamId)} className="img-small" alt="" /></div>
+          <div className="col-xs-4 col-sm-3 col-md-2 text-left"><img src={Feed.getLogo(this.props.teamId)} className="img-small" alt="" /></div>
           <div className="col-xs-1"><strong>G</strong></div>
           <div className="col-xs-1"><strong>A</strong></div>
           <div className="col-xs-1"><strong>+/-</strong></div>
@@ -28,6 +28,7 @@ class SkaterList extends Component {
                 skaterId={skaterId}
                 teamId={this.props.teamId}
                 gameId={this.props.gameId}
+                picks={this.props.picks.filter(pick => pick.id === skaterId)}
                 type={this.props.type}
               />
             )

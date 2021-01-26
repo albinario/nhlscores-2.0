@@ -54,7 +54,7 @@ class Team extends Component {
 
     return (
       <p>
-        <img src={Feed.getLogo(this.props.teamId)} alt="" /><span className="hidden-xs">{this.state.city} </span>{this.state.name} <span className="label label-default">{this.props.record}</span>
+        <img src={Feed.getLogo(this.props.teamId)} alt="" /><span className="hidden-5 hidden-6">{this.state.city} </span><span className="hidden-5">{this.state.name} </span><span className="label label-default">{this.props.record}</span> <span className="label label-default">{this.props.picks.map(pick => pick.picker+pick.jersey).join(', ')}</span>
           {this.props.playedStatus ?
             <span className="pull-right btn btn-default btn-sm">{showExtra && this.state.extra} <strong>{this.props.score}</strong></span>
             :

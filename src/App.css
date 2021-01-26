@@ -1,3 +1,29 @@
 body {
   background-color: #2d2d2d;
 }
+
+.pick {
+  font-weight: bold;
+}
+
+/* @media (max-width: 767px) { */
+@media (max-width: 320px) {
+  .hidden-5 {
+    display: none !important;
+  }
+}
+@media (min-width: 321px) and (max-width: 375px) {
+  .hidden-6 {
+    display: none !important;
+  }
+}
+/* @media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+} */

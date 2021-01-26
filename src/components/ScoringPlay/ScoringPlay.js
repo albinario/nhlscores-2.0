@@ -14,7 +14,7 @@ class ScoringPlay extends Component {
       strength: null,
       gwg: null,
       eng: null,
-      description: null
+      players: []
     }
     this.setInfo = this.setInfo.bind(this);
   }
@@ -29,7 +29,7 @@ class ScoringPlay extends Component {
         goalsAway: scoringPlay.about.goals.away,
         gwg: scoringPlay.result.gameWinningGoal,
         eng: scoringPlay.result.emptyNet,
-        description: scoringPlay.result.description.replace('assists: ', '').replace(', none', '')
+        players: scoringPlay.players.filter(p => p.playerType !== "Goalie")
       })
       if (scoringPlay.result.strength.code !== 'EVEN') {
         this.setState({
@@ -48,7 +48,7 @@ class ScoringPlay extends Component {
     return (
       <div className="row">
         <div className="col-xs-2 col-sm-1 text-right scoring-play">{this.state.period !== 'SO' && this.state.goalsHome+'-'+this.state.goalsAway}</div>
-        <div className="col-xs-10 col-sm-11"><img src={Feed.getLogo(this.state.teamId)} className="img-small" alt="" />{this.state.periodTime !== '00:00' && this.state.periodTime} <span className="small">{this.state.period} – <em>{this.state.gwg && 'GWG '}{this.state.eng && 'ENG '}{this.state.strength && this.state.strength+' '}</em></span>{this.state.description}</div>
+        <div className="col-xs-10 col-sm-11"><img src={Feed.getLogo(this.state.teamId)} className="img-small" alt="" />{this.state.periodTime !== '00:00' && this.state.periodTime} <span className="small">{this.state.period} – <em>{this.state.gwg && 'GWG '}{this.state.eng && 'ENG '}{this.state.strength && this.state.strength+' '}</em></span>{this.state.players.map(p => p.player.fullName +' ('+p.seasonTotal+')'+Feed.isPicked(p.player.id)).join(', ')}</div>
       </div>
     );
   }
