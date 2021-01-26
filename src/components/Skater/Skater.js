@@ -51,18 +51,18 @@ class Skater extends Component {
   render() {
     // console.log("Skater: render() "+this.props.skaterId);
     return (
-      <div className="row text-center">
-        <div className="col-xs-1 text-right">{this.state.jersey}</div>
-        <div className="col-xs-4 col-sm-3 col-md-2 text-left"><span className="hidden-xs hidden-sm">{this.state.fullName}</span><span className="hidden-md hidden-lg">{this.state.lastName}</span> <span className="pick">{this.props.picks.map(pick => pick.picker)}</span></div>
-        <div className="col-xs-1">{this.state.goals}</div>
-        <div className="col-xs-1">{this.state.assists}</div>
-        <div className="col-xs-1">{(this.state.plusMinus > 0) ? '+' : '' }{this.state.plusMinus}</div>
-        <div className="col-xs-1">{this.state.shots}</div>
-        <div className="col-xs-1">{this.state.pim}</div>
-        <div className="hidden-xs col-sm-1">{this.state.hits}</div>
-        <div className="hidden-xs col-sm-1">{this.state.blocked}</div>
-        <div className="hidden-xs hidden-sm col-md-2">{this.state.timeOnIce}</div>
-      </div>
+      <tr>
+        <td className="text-left">{this.state.jersey}</td>
+        <td className="text-left"><span className="hidden-xs">{this.state.fullName}</span><span className="hidden-sm hidden-md hidden-lg">{this.state.lastName}</span> <span className="pick">{Feed.isPicked(this.props.skaterId)}</span></td>
+        <td>{this.state.goals}</td>
+        <td>{this.state.assists}</td>
+        <td>{(this.state.plusMinus > 0) ? '+' : null }{this.state.plusMinus}</td>
+        <td>{this.state.shots}</td>
+        <td>{this.state.pim}</td>
+        <td>{this.state.hits}</td>
+        <td>{this.state.blocked}</td>
+        <td className="hidden-5 hidden-6">{this.state.timeOnIce}</td>
+      </tr>
     );
   }
 }

@@ -6,35 +6,42 @@ class SkaterList extends Component {
   render() {
     // console.log("SkaterList: render() for game: "+this.props.gameId);
     return (
-      <div>
-        <div className="row text-center small">
-          <div className="col-xs-1"></div>
-          <div className="col-xs-4 col-sm-3 col-md-2 text-left"><img src={Feed.getLogo(this.props.teamId)} className="img-small" alt="" /></div>
-          <div className="col-xs-1"><strong>G</strong></div>
-          <div className="col-xs-1"><strong>A</strong></div>
-          <div className="col-xs-1"><strong>+/-</strong></div>
-          <div className="col-xs-1"><strong>S</strong></div>
-          <div className="col-xs-1"><strong>PIM</strong></div>
-          <div className="hidden-xs col-sm-1"><strong>H</strong></div>
-          <div className="hidden-xs col-sm-1"><strong>B</strong></div>
-          <div className="hidden-xs hidden-sm col-md-2"><strong>TOI | PP | SH</strong></div>
+      <div className="row">
+        <div className="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2">
+          <table className="table text-center">
+            <thead>
+              <tr className="bold">
+                <td></td>
+                <td className="text-left"><img src={Feed.getLogo(this.props.teamId)} className="img-small" alt="" /></td>
+                <td>G</td>
+                <td>A</td>
+                <td>+/-</td>
+                <td>S</td>
+                <td>PIM</td>
+                <td>H</td>
+                <td>B</td>
+                <td className="hidden-5 hidden-6">TOI | PP | SH</td>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                this.props.skaters.map(skaters => {
+                  return skaters.map((skaterId, index) => {
+                    return (
+                      <Skater
+                        key={index}
+                        skaterId={skaterId}
+                        teamId={this.props.teamId}
+                        gameId={this.props.gameId}
+                        type={this.props.type}
+                      />
+                    )
+                  })
+                })
+              }
+            </tbody>
+          </table>
         </div>
-      {
-        this.props.skaters.map(skaters => {
-          return skaters.map((skaterId, index) => {
-            return (
-              <Skater
-                key={index}
-                skaterId={skaterId}
-                teamId={this.props.teamId}
-                gameId={this.props.gameId}
-                picks={this.props.picks.filter(pick => pick.id === skaterId)}
-                type={this.props.type}
-              />
-            )
-          })
-        })
-      }
       </div>
     );
   }

@@ -21,6 +21,10 @@ class Game extends Component {
     let chevronSecond = "glyphicon glyphicon-chevron-down";
     if (this.state.expandFirst) {chevronFirst = "glyphicon glyphicon-chevron-up";}
     if (this.state.expandSecond) {chevronSecond = "glyphicon glyphicon-chevron-up";}
+    // let showChevron = false;
+    // if (this.props.game.playedStatus || this.props.game.homePicks.length > 0 || this.props.game.awayPicks.length > 0) {
+    //   showChevron = true;
+    // }
     return (
       <div className="well well-sm">
         <div onClick={() => (this.setState({expandFirst: !this.state.expandFirst}))}>
@@ -43,68 +47,75 @@ class Game extends Component {
             winningTeam={this.props.game.winningTeam}
             gameId={this.props.game.gameId}
           />
-          {this.props.game.playedStatus &&
-            <p className="text-center small"><span className={chevronFirst}></span></p>
-          }
+          {this.props.game.playedStatus && <p className="text-center small"><span className={chevronFirst}></span></p>}
         </div>
-          {this.props.game.playedStatus &&
-            <Collapse in={this.state.expandFirst} onClick={() => (this.setState({expandSecond: !this.state.expandSecond}))}>
-              <div>
-                <ScoringPlayList
-                  gameId={this.props.game.gameId}
-                  scoringPlays={this.props.game.scoringPlays}
-                />
-                <br/>
-                <div className="row text-center small">
-                  <div className="col-xs-1"></div>
-                  <div className="col-xs-6 col-sm-2"></div>
-                  <div className="col-xs-2 col-sm-1"><strong>Saves</strong></div>
-                  <div className="hidden-xs col-sm-1"><strong>%</strong></div>
-                  <div className="hidden-xs col-sm-1"><strong>PP</strong></div>
-                  <div className="hidden-xs col-sm-1"><strong>SH</strong></div>
-                  <div className="hidden-xs col-sm-1"><strong>TOI</strong></div>
-                  <div className="hidden-xs col-sm-1"><strong>G</strong></div>
-                  <div className="hidden-xs col-sm-1"><strong>A</strong></div>
-                  <div className="col-xs-2 col-sm-1"><strong>PIM</strong></div>
+        {this.props.game.playedStatus ?
+          <Collapse in={this.state.expandFirst} onClick={() => (this.setState({expandSecond: !this.state.expandSecond}))}>
+            <div>
+              <ScoringPlayList
+                gameId={this.props.game.gameId}
+                scoringPlays={this.props.game.scoringPlays}
+              />
+              <br/>
+              <div className="row">
+                <div className="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2">
+                  <table className="table text-center">
+                    <thead>
+                      <tr className="bold">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Saves</td>
+                        <td className="hidden-5 hidden-6">%</td>
+                        <td className="hidden-5 hidden-6">PP</td>
+                        <td className="hidden-5 hidden-6">SH</td>
+                        <td className="hidden-5 hidden-6">TOI</td>
+                        <td className="hidden-5 hidden-6">G</td>
+                        <td>A</td>
+                        <td>PIM</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <GoalieList
+                        goalies={this.props.game.awayGoalies}
+                        teamId={this.props.game.awayTeamId}
+                        gameId={this.props.game.gameId}
+                        type='away'
+                      />
+                      <GoalieList
+                        goalies={this.props.game.homeGoalies}
+                        teamId={this.props.game.homeTeamId}
+                        gameId={this.props.game.gameId}
+                        type='home'
+                      />
+                    </tbody>
+                  </table>
                 </div>
-                <GoalieList
-                  goalies={this.props.game.awayGoalies}
-                  teamId={this.props.game.awayTeamId}
-                  gameId={this.props.game.gameId}
-                  picks={this.props.game.awayPicks.filter(pick => pick.pos === "G")}
-                  type='away'
-                />
-                <GoalieList
-                  goalies={this.props.game.homeGoalies}
-                  teamId={this.props.game.homeTeamId}
-                  gameId={this.props.game.gameId}
-                  picks={this.props.game.homePicks.filter(pick => pick.pos === "G")}
-                  type='home'
-                />
-                <br/>
-                <p className="text-center small"><span className={chevronSecond}></span></p>
-                <Collapse in={this.state.expandSecond}>
-                  <div>
-                    <SkaterList
-                      skaters={this.props.game.awaySkaters}
-                      teamId={this.props.game.awayTeamId}
-                      gameId={this.props.game.gameId}
-                      picks={this.props.game.awayPicks.filter(pick => pick.pos !== "G")}
-                      type='away'
-                    />
-                    <br/>
-                    <SkaterList
-                      skaters={this.props.game.homeSkaters}
-                      teamId={this.props.game.homeTeamId}
-                      gameId={this.props.game.gameId}
-                      picks={this.props.game.homePicks.filter(pick => pick.pos !== "G")}
-                      type='home'
-                    />
-                  </div>
-                </Collapse>
               </div>
-            </Collapse>
-          }
+              <br/>
+              <p className="text-center small"><span className={chevronSecond}></span></p>
+              <Collapse in={this.state.expandSecond}>
+                <div>
+                  <SkaterList
+                    skaters={this.props.game.awaySkaters}
+                    teamId={this.props.game.awayTeamId}
+                    gameId={this.props.game.gameId}
+                    type='away'
+                  />
+                  <br/>
+                  <SkaterList
+                    skaters={this.props.game.homeSkaters}
+                    teamId={this.props.game.homeTeamId}
+                    gameId={this.props.game.gameId}
+                    type='home'
+                  />
+                </div>
+              </Collapse>
+            </div>
+          </Collapse>
+          :
+          null
+        }
       </div>
     )
   }

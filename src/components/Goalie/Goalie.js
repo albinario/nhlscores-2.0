@@ -57,18 +57,19 @@ class Goalie extends Component {
   render() {
     // console.log("Goalie: render()");
     return (
-      <div className="row text-center">
-        <div className="col-xs-1 text-right"><img src={Feed.getLogo(this.props.teamId)} className="img-small" alt="" /><span className="hidden-xs hidden-sm"> {this.state.jersey}</span></div>
-        <div className="col-xs-6 col-sm-2 text-left"><span className="hidden-xs hidden-sm">{this.state.fullName}</span><span className="hidden-md hidden-lg">{this.state.lastName}</span> {this.state.decision} <span className="pick">{this.props.picks.map(pick => pick.picker)}</span></div>
-        <div className="col-xs-2 col-sm-1">{this.state.saves}/{this.state.shots}</div>
-        <div className="hidden-xs col-sm-1">{this.state.savePercentage}</div>
-        <div className="hidden-xs col-sm-1">{this.state.savesPP}/{this.state.shotsPP}</div>
-        <div className="hidden-xs col-sm-1">{this.state.savesSH}/{this.state.shotsSH}</div>
-        <div className="hidden-xs col-sm-1">{this.state.timeOnIce}</div>
-        <div className="hidden-xs col-sm-1">{this.state.goals}</div>
-        <div className="hidden-xs col-sm-1">{this.state.assists}</div>
-        <div className="col-xs-2 col-sm-1">{this.state.pim}</div>
-      </div>
+      <tr>
+        <td className=""><img src={Feed.getLogo(this.props.teamId)} className="img-small" alt="" /></td>
+        <td>{this.state.jersey}</td>
+        <td className="text-left"><span className="hidden-xs hidden-sm">{this.state.fullName}</span><span className="hidden-md hidden-lg">{this.state.lastName}</span> {this.state.decision} <span className="pick">{Feed.isPicked(this.props.goalieId)}</span></td>
+        <td>{this.state.saves}/{this.state.shots}</td>
+        <td className="hidden-5 hidden-6">{this.state.savePercentage}</td>
+        <td className="hidden-5 hidden-6">{this.state.savesPP}/{this.state.shotsPP}</td>
+        <td className="hidden-5 hidden-6">{this.state.savesSH}/{this.state.shotsSH}</td>
+        <td className="hidden-5 hidden-6">{this.state.timeOnIce}</td>
+        <td className="hidden-5 hidden-6">{this.state.goals}</td>
+        <td>{this.state.assists}</td>
+        <td>{this.state.pim}</td>
+      </tr>
     );
   }
 }
