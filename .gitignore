@@ -24,3 +24,7 @@ yarn-error.log*
 
 *2.*
 src/util/Picks.js
+
+# graphics
+*.png
+*.ico
