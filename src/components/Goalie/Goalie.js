@@ -25,7 +25,7 @@ class Goalie extends Component {
   }
 
   setInfo() {
-    Feed.getPlayer(this.props.goalieId, this.props.gameId, this.props.type).then(goalie => {
+    Feed.getPlayerStats(this.props.goalieId, this.props.gameId, this.props.type).then(goalie => {
       this.setState({
         fullName: goalie.person.fullName,
         lastName: Feed.getLastName(goalie.person.fullName),

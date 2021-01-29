@@ -10,6 +10,10 @@ body {
     padding: 0px;
 }
 
+.img-small {
+  height: 15px;
+}
+
 /* @media (max-width: 767px) { */
 @media (max-width: 320px) {
   .hidden-5 {
@@ -18,6 +22,11 @@ body {
 }
 @media (min-width: 321px) and (max-width: 415px) {
   .hidden-6 {
+    display: none !important;
+  }
+}
+@media (min-width: 416px) {
+  .hidden-7up {
     display: none !important;
   }
 }

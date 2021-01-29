@@ -15,6 +15,11 @@ const Connect = {
     return fetch(`${Config.apiUrl}teams?teamId=${teamId}`).then(response => {
       return response.json();
     })
+  },
+  peopleAPI(playerId) {
+    return fetch(`${Config.apiUrl}people/${playerId}`).then(response => {
+      return response.json();
+    })
   }
 }
 

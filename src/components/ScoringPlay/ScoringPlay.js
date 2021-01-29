@@ -45,10 +45,21 @@ class ScoringPlay extends Component {
 
   render() {
     // console.log("ScoringPlay: render() "+this.props.scoringPlayId);
+    let l = this.state.players.length;
     return (
       <div className="row">
         <div className="col-xs-2 col-sm-1 text-right scoring-play">{this.state.period !== 'SO' && this.state.goalsHome+'-'+this.state.goalsAway}</div>
-        <div className="col-xs-10 col-sm-11"><img src={Feed.getLogo(this.state.teamId)} className="img-small" alt="" />{this.state.periodTime !== '00:00' && this.state.periodTime} <span className="small">{this.state.period} – <em>{this.state.gwg && 'GWG '}{this.state.eng && 'ENG '}{this.state.strength && this.state.strength+' '}</em></span>{this.state.players.map(p => p.player.fullName +' ('+p.seasonTotal+')'+Feed.isPicked(p.player.id)).join(', ')}</div>
+        <div className="col-xs-10 col-sm-11"><img src={Feed.getLogo(this.state.teamId)} className="img-small img-adj" alt="" />{this.state.periodTime !== '00:00' && this.state.periodTime} <span className="small">{this.state.period} – <em>{this.state.gwg && 'GWG '}{this.state.eng && 'ENG '}{this.state.strength && this.state.strength+' '}</em></span>{this.state.players.map((p, index) => {
+          const isPicked = Feed.isPicked(p.player.id);
+          let className = null;
+          if (isPicked) { className = 'pick'; }
+          l--;
+          return (
+            <span key={index} className={className}>
+              {p.player.fullName +' ('+p.seasonTotal+')'+isPicked+((l) ? ', ' : '')}
+            </span>
+          );
+        })}</div>
       </div>
     );
   }

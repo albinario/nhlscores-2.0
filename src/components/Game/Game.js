@@ -4,6 +4,7 @@ import Team from '../Team/Team';
 import ScoringPlayList from '../ScoringPlayList/ScoringPlayList';
 import GoalieList from '../GoalieList/GoalieList';
 import SkaterList from '../SkaterList/SkaterList';
+import PickedPlayer from '../PickedPlayer/PickedPlayer';
 import Collapse from 'react-bootstrap/Collapse';
 
 class Game extends Component {
@@ -21,10 +22,7 @@ class Game extends Component {
     let chevronSecond = "glyphicon glyphicon-chevron-down";
     if (this.state.expandFirst) {chevronFirst = "glyphicon glyphicon-chevron-up";}
     if (this.state.expandSecond) {chevronSecond = "glyphicon glyphicon-chevron-up";}
-    // let showChevron = false;
-    // if (this.props.game.playedStatus || this.props.game.homePicks.length > 0 || this.props.game.awayPicks.length > 0) {
-    //   showChevron = true;
-    // }
+    const allPicks = this.props.game.awayPicks.sort((a,b) => a.jersey-b.jersey).concat(this.props.game.homePicks.sort((a,b) => a.jersey-b.jersey));
     return (
       <div className="well well-sm">
         <div onClick={() => (this.setState({expandFirst: !this.state.expandFirst}))}>
@@ -47,7 +45,7 @@ class Game extends Component {
             winningTeam={this.props.game.winningTeam}
             gameId={this.props.game.gameId}
           />
-          {this.props.game.playedStatus && <p className="text-center small"><span className={chevronFirst}></span></p>}
+          {(this.props.game.playedStatus || allPicks.length > 0) && <p className="text-center small"><span className={chevronFirst}></span></p>}
         </div>
         {this.props.game.playedStatus ?
           <Collapse in={this.state.expandFirst} onClick={() => (this.setState({expandSecond: !this.state.expandSecond}))}>
@@ -113,6 +111,20 @@ class Game extends Component {
               </Collapse>
             </div>
           </Collapse>
+        :
+          allPicks.length > 0 ?
+            <Collapse in={this.state.expandFirst}>
+              <div>
+              {allPicks.map((pick, index) => {
+                return (
+                  <PickedPlayer
+                    key={index}
+                    info={pick}
+                  />
+                )
+              })}
+              </div>
+            </Collapse>
           :
           null
         }

@@ -65,7 +65,7 @@ class Header extends Component {
     return (
       <div className="row header">
         <div className="col-xs-1"><span className="glyphicon glyphicon-chevron-left" onClick={this.decreaseDate}></span></div>
-        <div className="col-xs-9 col-sm-10"><h2 className="text-center">{title}</h2></div>
+        <div className="col-xs-10"><h2 className="text-center">{title}</h2></div>
         <div className="col-xs-1"><span className="glyphicon glyphicon-chevron-right pull-right" onClick={this.increaseDate}></span></div>
       </div>
     )

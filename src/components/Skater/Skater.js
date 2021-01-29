@@ -23,7 +23,7 @@ class Skater extends Component {
   }
 
   setInfo() {
-    Feed.getPlayer(this.props.skaterId, this.props.gameId, this.props.type).then(skater => {
+    Feed.getPlayerStats(this.props.skaterId, this.props.gameId, this.props.type).then(skater => {
       this.setState({
         fullName: skater.person.fullName,
         lastName: Feed.getLastName(skater.person.fullName),

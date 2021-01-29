@@ -76,10 +76,19 @@ const Feed = {
       console.log(err);
     })
   },
-  getPlayer(playerId, gameId, type) {
+  getPlayerStats(playerId, gameId, type) {
     return Connect.gameAPI(gameId).then(jsonResponse => {
       if (jsonResponse) {
         return jsonResponse.liveData.boxscore.teams[type].players['ID'+playerId];
+      }
+    }).catch(err => {
+      console.log(err);
+    })
+  },
+  getPlayerInfo(playerId) {
+    return Connect.peopleAPI(playerId).then(jsonResponse => {
+      if (jsonResponse) {
+        return jsonResponse.people[0];
       }
     }).catch(err => {
       console.log(err);
