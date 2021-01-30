@@ -114,15 +114,21 @@ class Game extends Component {
         :
           allPicks.length > 0 ?
             <Collapse in={this.state.expandFirst}>
-              <div>
-              {allPicks.map((pick, index) => {
-                return (
-                  <PickedPlayer
-                    key={index}
-                    info={pick}
-                  />
-                )
-              })}
+              <div className="row">
+                <div className="col-xs-12 col-sm-6 col-md-4">
+                  <table className="table">
+                    <tbody>
+                      {allPicks.map((pick, index) => {
+                        return (
+                          <PickedPlayer
+                            key={index}
+                            info={pick}
+                          />
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </Collapse>
           :

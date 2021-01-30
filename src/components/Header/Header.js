@@ -26,7 +26,6 @@ class Header extends Component {
     let newDate = moment(new Date()).add(this.state.day, 'days').format('YYYY-MM-DD');
     this.setState({date: newDate});
     this.props.onDateChange(this.state.date);
-    // this.getTitle();
   }
 
   async increaseDate() {
@@ -54,8 +53,7 @@ class Header extends Component {
       return "Last night";
     }
     else {
-      const beautifyOtherDays = moment(currentDate).format('MMM Do');;
-      return beautifyOtherDays;
+      return moment(currentDate).format('MMM Do');
     }
   }
 
@@ -65,7 +63,7 @@ class Header extends Component {
     return (
       <div className="row header">
         <div className="col-xs-1"><span className="glyphicon glyphicon-chevron-left" onClick={this.decreaseDate}></span></div>
-        <div className="col-xs-10"><h2 className="text-center">{title}</h2></div>
+        <div className="col-xs-9 col-sm-10"><h2 className="text-center">{title}</h2></div>
         <div className="col-xs-1"><span className="glyphicon glyphicon-chevron-right pull-right" onClick={this.increaseDate}></span></div>
       </div>
     )

@@ -34,11 +34,11 @@ class PickedPlayer extends Component {
   render() {
     // console.log("ScoringPlay: render() "+this.props.scoringPlayId);
     return (
-      <div className="row">
-        <div className="col-xs-4 col-sm-2 col-lg-1"><img src={Feed.getLogo(this.props.info.team)} alt="" className="img-small" />{this.props.info.jersey} <span className="small">{this.props.info.pos}</span></div>
-        <div className="col-xs-4 col-sm-3 col-md-2 col-lg-2"><span className="hidden-5 hidden-6">{this.state.fullName}</span><span className="hidden-7up">{this.state.lastName}</span></div>
-        <div className="col-xs-3">{this.props.info.picker.replace('A', 'Albin').replace('J', 'Jakob').replace('S', 'Sacke').replace('V', 'Ville')}</div>
-      </div>
+      <tr>
+        <td><img src={Feed.getLogo(this.props.info.team)} alt="" className="img-small" />{this.props.info.jersey}</td>
+        <td><span className="hidden-5 hidden-6">{this.state.fullName}</span><span className="hidden-7up">{this.state.lastName}</span> <span className="small">{this.props.info.pos}</span></td>
+        <td>{this.props.info.picker.replace('A', 'Albin').replace('J', 'Jakob').replace('S', 'Sacke').replace('V', 'Ville')}</td>
+      </tr>
     );
   }
 }

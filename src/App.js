@@ -13,18 +13,21 @@ class App extends Component {
       message: 'Loading games...'
     }
     this.onDateChange = this.onDateChange.bind(this);
-    Feed.getGames(moment().subtract(1, 'days').format("YYYY-MM-DD")).then(games => {
-      this.setState({
-        games: games,
-        message: 'No games scheduled this day'
-      })
-    });
   }
 
   onDateChange(dateFromHeader) {
     Feed.getGames(dateFromHeader).then(games => {
       this.setState({
         games: games
+      })
+    });
+  }
+
+  componentDidMount() {
+    Feed.getGames(moment().subtract(1, 'days').format("YYYY-MM-DD")).then(games => {
+      this.setState({
+        games: games,
+        message: 'No games scheduled this day'
       })
     });
   }
