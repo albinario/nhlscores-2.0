@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Feed from '../../util/Feed';
+import Feed from '../util/Feed';
 
 class Skater extends Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class Skater extends Component {
     // console.log("Skater: render() "+this.props.skaterId);
     return (
       <tr>
-        <td className="text-left">{this.state.jersey}</td>
+        <td>{this.state.jersey}</td>
         <td className="text-left"><span className="hidden-xs">{this.state.fullName}</span><span className="hidden-sm hidden-md hidden-lg">{this.state.lastName}</span> <span className="pick">{Feed.isPicked(this.props.skaterId)}</span></td>
         <td>{this.state.goals}</td>
         <td>{this.state.assists}</td>

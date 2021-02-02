@@ -2,17 +2,54 @@ body {
   background-color: #2d2d2d;
 }
 
+h2 {
+  margin: 0;
+}
+
+.header {
+  margin: 20px 0;
+  font-size: 20px;
+  color: #eee;
+}
+
+.well {
+  background-color: #eee;
+}
+
 .pick, .bold {
   font-weight: bold;
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    padding: 0px;
-    border: none;
+  padding: 0px;
+  border: none;
+}
+
+img {
+  height: 25px;
 }
 
 .img-small {
   height: 15px;
+  margin-bottom: 2px;
+}
+
+.img-mgl {
+  margin-left: 5px;
+}
+
+.img-mgr {
+  margin-right: 5px;
+}
+
+.label-default {
+  background-color: #eee;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.btn-default {
+  background-color: #eee;
 }
 
 /* @media (max-width: 767px) { */

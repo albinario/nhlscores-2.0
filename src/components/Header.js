@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import './Header.css';
 
 class Header extends Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Feed from '../../util/Feed';
+import Feed from '../util/Feed';
 
 class Goalie extends Component {
   constructor(props) {

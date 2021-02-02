@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Skater from '../Skater/Skater';
-import Feed from '../../util/Feed';
+import Skater from './Skater';
+import Feed from '../util/Feed';
 
 class SkaterList extends Component {
   render() {

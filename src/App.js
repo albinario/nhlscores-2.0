@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import moment from 'moment';
 import Feed from './util/Feed';
-import Header from './components/Header/Header';
-import GameList from './components/GameList/GameList';
+import Header from './components/Header';
+import GameList from './components/GameList';
 
 class App extends Component {
   constructor(props) {

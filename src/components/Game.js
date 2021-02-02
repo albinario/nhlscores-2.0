@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './Game.css';
-import Team from '../Team/Team';
-import ScoringPlayList from '../ScoringPlayList/ScoringPlayList';
-import GoalieList from '../GoalieList/GoalieList';
-import SkaterList from '../SkaterList/SkaterList';
-import PickedPlayer from '../PickedPlayer/PickedPlayer';
+import Team from './Team';
+import ScoringPlayList from './ScoringPlayList';
+import GoalieList from './GoalieList';
+import SkaterList from './SkaterList';
+import PickedPlayer from './PickedPlayer';
 import Collapse from 'react-bootstrap/Collapse';
 
 class Game extends Component {
@@ -132,7 +131,7 @@ class Game extends Component {
               </div>
             </Collapse>
           :
-          null
+            null
         }
       </div>
     )

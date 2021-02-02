@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './PickedPlayer.css';
-import Feed from '../../util/Feed';
+import Feed from '../util/Feed';
 
 class PickedPlayer extends Component {
   constructor(props) {
@@ -35,7 +34,7 @@ class PickedPlayer extends Component {
     // console.log("ScoringPlay: render() "+this.props.scoringPlayId);
     return (
       <tr>
-        <td><img src={Feed.getLogo(this.props.info.team)} alt="" className="img-small" />{this.props.info.jersey}</td>
+        <td><img src={Feed.getLogo(this.props.info.team)} alt="" className="img-small img-mgl" />{this.props.info.jersey}</td>
         <td><span className="hidden-5 hidden-6">{this.state.fullName}</span><span className="hidden-7up">{this.state.lastName}</span> <span className="small">{this.props.info.pos}</span></td>
         <td>{this.props.info.picker.replace('A', 'Albin').replace('J', 'Jakob').replace('S', 'Sacke').replace('V', 'Ville')}</td>
       </tr>

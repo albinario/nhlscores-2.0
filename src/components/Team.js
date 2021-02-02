@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './Team.css';
-import Feed from '../../util/Feed';
+import Feed from '../util/Feed';
 
 class Team extends Component {
   constructor(props) {
@@ -38,7 +37,7 @@ class Team extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.gameId !== prevProps.gameId) {
+    if (this.props.teamId !== prevProps.teamId) {
       this.setInfo();
     }
   }
@@ -54,13 +53,12 @@ class Team extends Component {
 
     return (
       <p>
-        <img src={Feed.getLogo(this.props.teamId)} alt="" /><span className="hidden-5 hidden-6">{this.state.city} </span><span className="hidden-5">{this.state.name} </span><span className="label label-default">{this.props.record}</span> <span className="label label-default">{this.props.picks.map(pick => pick.picker+pick.jersey).join(', ')}</span>
-          {this.props.playedStatus ?
-            <span className="pull-right btn btn-default btn-sm">{showExtra && this.state.extra} <strong>{this.props.score}</strong></span>
-            :
-            this.props.startTime &&
-              <span className="pull-right btn btn-default btn-sm">{this.props.startTime}</span>
-          }
+        <img src={Feed.getLogo(this.props.teamId)} alt="" className="img-mgr" /><span className="hidden-5 hidden-6">{this.state.city} </span><span className="hidden-5">{this.state.name} </span><span className="label label-default">{this.props.record}</span> <span className="label label-default">{this.props.picks.map(pick => pick.picker+pick.jersey).join(', ')}</span>
+        {this.props.playedStatus ?
+          <span className="pull-right btn btn-default btn-sm">{showExtra && this.state.extra} <strong>{this.props.score}</strong></span>
+        :
+          this.props.startTime && <span className="pull-right btn btn-default btn-sm">{this.props.startTime}</span>
+        }
       </p>
     );
   }

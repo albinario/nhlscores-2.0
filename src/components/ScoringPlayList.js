@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ScoringPlay from '../ScoringPlay/ScoringPlay';
+import ScoringPlay from './ScoringPlay';
 
 class ScoringPlayList extends Component {
   render() {

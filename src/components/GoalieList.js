@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Goalie from '../Goalie/Goalie';
+import Goalie from './Goalie';
 
 class GoalieList extends Component {
   render() {
