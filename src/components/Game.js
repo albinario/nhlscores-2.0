@@ -30,24 +30,24 @@ class Game extends Component {
             record={this.props.game.awayRecord}
             score={this.props.game.awayScore}
             picks={this.props.game.awayPicks}
-            gameFinal={this.props.game.gameFinal}
+            final={this.props.game.final}
             winningTeam={this.props.game.winningTeam}
             gameId={this.props.game.gameId}
             startTime={this.props.game.startTime}
-            gamePostponed={this.props.game.gamePostponed}
+            postponed={this.props.game.postponed}
           />
           <Team
             teamId={this.props.game.homeTeamId}
             record={this.props.game.homeRecord}
             score={this.props.game.homeScore}
             picks={this.props.game.homePicks}
-            gameFinal={this.props.game.gameFinal}
+            final={this.props.game.final}
             winningTeam={this.props.game.winningTeam}
             gameId={this.props.game.gameId}
           />
-          {(this.props.game.gameFinal || allPicks.length > 0) && <p className="text-center small"><span className={chevronFirst}></span></p>}
+          {(this.props.game.final || allPicks.length > 0) && <p className="text-center small"><span className={chevronFirst}></span></p>}
         </div>
-        {this.props.game.gameFinal ?
+        {this.props.game.final ?
           <Collapse in={this.state.expandFirst} onClick={() => (this.setState({expandSecond: !this.state.expandSecond}))}>
             <div>
               <ScoringPlayList

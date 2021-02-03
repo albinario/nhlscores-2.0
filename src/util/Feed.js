@@ -6,12 +6,12 @@ const Feed = {
     return Connect.scheduleAPI(date).then(jsonResponse => {
       return jsonResponse.dates[0].games.map(game => {
         let startTime = '';
-        let gameFinal = false;
-        let gamePostponed = false;
+        let final = false;
+        let postponed = false;
         if (game.status.detailedState === "Final") {
-          gameFinal = true;
+          final = true;
         } else if (game.status.detailedState === "Postponed") {
-          gamePostponed = true;
+          postponed = true;
         }
         const homeRecord = game.teams.home.leagueRecord.wins+'-'+game.teams.home.leagueRecord.losses+'-'+game.teams.home.leagueRecord.ot;
         const awayRecord = game.teams.away.leagueRecord.wins+'-'+game.teams.away.leagueRecord.losses+'-'+game.teams.away.leagueRecord.ot;
@@ -21,7 +21,7 @@ const Feed = {
         let awaySkaters = [];
         let scoringPlays = [];
         let winningTeam = 0;
-        if (gameFinal) {
+        if (final) {
           this.getGameInfo(game.gamePk).then(gameInfo => {
             homeGoalies.push(gameInfo.homeGoalies);
             awayGoalies.push(gameInfo.awayGoalies);
@@ -55,10 +55,10 @@ const Feed = {
           awayGoalies: awayGoalies,
           awaySkaters: awaySkaters,
           awayPicks: Picks.filter(pick => pick.team === game.teams.away.team.id),
-          gameFinal: gameFinal,
+          final: final,
           scoringPlays: scoringPlays,
           winningTeam: winningTeam,
-          gamePostponed: gamePostponed
+          postponed: postponed
         }
       });
     }).catch(err => {

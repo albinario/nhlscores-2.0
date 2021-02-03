@@ -45,7 +45,7 @@ class Team extends Component {
   render() {
     // console.log("Team: render() " + this.props.name);
     let showExtra = false;
-    if (this.props.gameFinal) {
+    if (this.props.final) {
       if (this.state.extra && this.props.winningTeam === this.props.teamId) {
         showExtra = true;
       }
@@ -54,10 +54,10 @@ class Team extends Component {
     return (
       <p>
         <img src={Feed.getLogo(this.props.teamId)} alt="" className="img-mgr" /><span className="hidden-5 hidden-6">{this.state.city} </span><span className="hidden-5">{this.state.name} </span><span className="label label-default">{this.props.record}</span> <span className="label label-default">{this.props.picks.map(pick => pick.picker+pick.jersey).join(', ')}</span>
-        {this.props.gameFinal ?
+        {this.props.final ?
           <span className="pull-right btn btn-default btn-sm">{showExtra && this.state.extra} <strong>{this.props.score}</strong></span>
         :
-          this.props.gamePostponed ?
+          this.props.postponed ?
             <span className="pull-right btn btn-default btn-sm">Postponed</span>
           :
           this.props.startTime && <span className="pull-right btn btn-default btn-sm">{this.props.startTime}</span>
