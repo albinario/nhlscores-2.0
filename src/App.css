@@ -52,6 +52,14 @@ img {
   background-color: #eee;
 }
 
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
 /* @media (max-width: 767px) { */
 @media (max-width: 320px) {
   .hidden-5 {

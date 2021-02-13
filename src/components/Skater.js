@@ -50,13 +50,19 @@ class Skater extends Component {
 
   render() {
     // console.log("Skater: render() "+this.props.skaterId);
+    let plusClass = '';
+    if (this.state.plusMinus > 0) {
+      plusClass = 'green';
+    } else if (this.state.plusMinus < 0) {
+      plusClass = 'red';
+    }
     return (
       <tr>
         <td>{this.state.jersey}</td>
         <td className="text-left"><span className="hidden-xs">{this.state.fullName}</span><span className="hidden-sm hidden-md hidden-lg">{this.state.lastName}</span> <span className="pick">{Feed.isPicked(this.props.skaterId)}</span></td>
         <td>{this.state.goals}</td>
         <td>{this.state.assists}</td>
-        <td>{(this.state.plusMinus > 0) ? '+' : null }{this.state.plusMinus}</td>
+        <td className={plusClass}>{(this.state.plusMinus > 0) && '+'}{this.state.plusMinus}</td>
         <td>{this.state.shots}</td>
         <td>{this.state.pim}</td>
         <td>{this.state.hits}</td>
