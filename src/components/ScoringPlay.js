@@ -55,7 +55,7 @@ class ScoringPlay extends Component {
           l--;
           return (
             <span key={index} className={className}>
-              {p.player.fullName +' ('+p.seasonTotal+')'+isPicked+((l) ? ', ' : '')}
+              {p.player.fullName}{this.state.period !== 'SO' && ' ('+p.seasonTotal+')'+isPicked+((l) ? ', ' : '')}
             </span>
           );
         })}</div>
