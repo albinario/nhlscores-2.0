@@ -50,12 +50,11 @@ class ScoringPlay extends Component {
         <div className="col-xs-2 col-sm-1 text-right scoring-play">{this.state.period !== 'SO' && this.state.goalsHome+'-'+this.state.goalsAway}</div>
         <div className="col-xs-10 col-sm-11"><img src={Feed.getLogo(this.state.teamId)} className="img-small" alt="" />{this.state.periodTime !== '00:00' && this.state.periodTime} <span className="small">{this.state.period} – <em>{this.state.gwg && 'GWG '}{this.state.eng && 'ENG '}{this.state.strength && this.state.strength+' '}</em></span>{this.state.players.map((p, index) => {
           const isPicked = Feed.isPicked(p.player.id);
-          let className = null;
-          if (isPicked) { className = 'pick'; }
+          const className = (isPicked ? 'pick' : null);
           l--;
           return (
             <span key={index} className={className}>
-              {p.player.fullName}{this.state.period !== 'SO' && ' ('+p.seasonTotal+')'+isPicked+((l) ? ', ' : '')}
+              {p.player.fullName}{this.state.period !== 'SO' && ' ('+p.seasonTotal+')'+isPicked+(l ? ', ' : '')}
             </span>
           );
         })}</div>
