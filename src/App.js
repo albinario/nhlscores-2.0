@@ -38,6 +38,7 @@ class App extends Component {
       <div className="container">
         <Header onDateChange={this.onDateChange} />
         <GameList games={this.state.games} message={this.state.message} />
+        <span className="pull-right white">Albin Lindeborg <span class="glyphicon glyphicon-copyright-mark"></span> 2021<br/>All rights reserved</span>
       </div>
     );
   }
