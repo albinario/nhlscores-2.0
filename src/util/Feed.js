@@ -13,8 +13,12 @@ const Feed = {
         } else if (game.status.detailedState === "Postponed") {
           postponed = true;
         }
-        const homeRecord = game.teams.home.leagueRecord.wins+'-'+game.teams.home.leagueRecord.losses+'-'+game.teams.home.leagueRecord.ot;
-        const awayRecord = game.teams.away.leagueRecord.wins+'-'+game.teams.away.leagueRecord.losses+'-'+game.teams.away.leagueRecord.ot;
+        const homeRecord = game.teams.home.leagueRecord.wins+'-'+game.teams.home.leagueRecord.losses;
+        const awayRecord = game.teams.away.leagueRecord.wins+'-'+game.teams.away.leagueRecord.losses;
+        if (game.gameType === "R") {
+          homeRecord += '-'+game.teams.home.leagueRecord.ot;
+          awayRecord += '-'+game.teams.away.leagueRecord.ot;
+        }
         let homeGoalies = [];
         let awayGoalies = [];
         let homeSkaters = [];
