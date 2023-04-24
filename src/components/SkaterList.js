@@ -26,7 +26,6 @@ class SkaterList extends Component {
 						<tbody>
 							{
 								this.props.skaters.map(skaters => {
-									console.log(skaters);
 									return skaters.map((skaterId, index) => {
 										let pickedBy = ""
 										if (this.props.picks.find(p => p.id === skaterId)) {
