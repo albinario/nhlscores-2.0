@@ -49,15 +49,17 @@ class ScoringPlay extends Component {
       <div className="row">
         <div className="col-xs-2 col-sm-1 text-right scoring-play">{this.state.period !== 'SO' && this.state.goalsHome+'-'+this.state.goalsAway}</div>
         <div className="col-xs-10 col-sm-11"><img src={Feed.getLogo(this.state.teamId)} className="img-small" alt="" />{this.state.periodTime !== '00:00' && this.state.periodTime} <span className="small">{this.state.period} - <em>{this.state.gwg && 'GWG '}{this.state.eng && 'ENG '}{this.state.strength && this.state.strength+' '}</em></span>{this.state.players.map((player, index) => {
+          console.log(player);
           let pickedBy = ""
           if (this.props.picks.find(p => p.id === player.player.id)) {
             pickedBy = this.props.picks.find(p => p.id === player.player.id).picker
           }
-          const className = (pickedBy ? 'pick' : null);
+          const pickedByClass = (pickedBy ? 'pick' : null);
           const pickedByText = (pickedBy ? ' '+pickedBy : "");
+          const assistClass = (player.playerType === "Assist" ? 'assist' : null)
           l--;
           return (
-            <span key={index} className={className}>
+            <span key={index} className={pickedByClass+' '+assistClass}>
               {player.player.fullName}{this.state.period !== 'SO' && ' ('+player.seasonTotal+')'+pickedByText+(l ? ', ' : '')}
             </span>
           );
