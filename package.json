@@ -9,7 +9,7 @@
 		"react-bootstrap": "^1.4.3",
 		"react-collapse": "^5.1.0",
 		"react-dom": "^16.14.0",
-		"react-scripts": "3.2.0"
+		"react-scripts": "5.0.1"
 	},
 	"scripts": {
 		"start": "react-scripts --openssl-legacy-provider start",
