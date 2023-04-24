@@ -16,12 +16,14 @@ class Game extends Component {
   }
 
   render() {
-    console.log("Game: render() " + this.props.game.gameId);
+    // console.log("Game: render() " + this.props.game.gameId);
+    console.log();
     let chevronFirst = "glyphicon glyphicon-chevron-down";
     let chevronSecond = "glyphicon glyphicon-chevron-down";
     if (this.state.expandFirst) {chevronFirst = "glyphicon glyphicon-chevron-up";}
     if (this.state.expandSecond) {chevronSecond = "glyphicon glyphicon-chevron-up";}
-    const allPicks = this.props.game.awayPicks.sort((a,b) => a.jersey-b.jersey).concat(this.props.game.homePicks.sort((a,b) => a.jersey-b.jersey));
+    const awayPicks = this.props.picks.filter(p => p.team === this.props.game.awayTeamId).sort((a,b) => a.jersey - b.jersey)
+    const homePicks = this.props.picks.filter(p => p.team === this.props.game.homeTeamId).sort((a,b) => a.jersey - b.jersey)
     return (
       <div className="well well-sm">
         <div onClick={() => (this.setState({expandFirst: !this.state.expandFirst}))}>
@@ -29,7 +31,7 @@ class Game extends Component {
             teamId={this.props.game.awayTeamId}
             record={this.props.game.awayRecord}
             score={this.props.game.awayScore}
-            picks={this.props.game.awayPicks}
+            picks={awayPicks}
             final={this.props.game.final}
             winningTeam={this.props.game.winningTeam}
             gameId={this.props.game.gameId}
@@ -40,12 +42,12 @@ class Game extends Component {
             teamId={this.props.game.homeTeamId}
             record={this.props.game.homeRecord}
             score={this.props.game.homeScore}
-            picks={this.props.game.homePicks}
+            picks={homePicks}
             final={this.props.game.final}
             winningTeam={this.props.game.winningTeam}
             gameId={this.props.game.gameId}
           />
-          {(this.props.game.final || allPicks.length > 0) && <p className="text-center small"><span className={chevronFirst}></span></p>}
+          {(this.props.game.final || this.props.picks.length > 0) && <p className="text-center small"><span className={chevronFirst}></span></p>}
         </div>
         {this.props.game.final ?
           <Collapse in={this.state.expandFirst} onClick={() => (this.setState({expandSecond: !this.state.expandSecond}))}>
@@ -53,6 +55,7 @@ class Game extends Component {
               <ScoringPlayList
                 gameId={this.props.game.gameId}
                 scoringPlays={this.props.game.scoringPlays}
+                picks={this.props.picks}
               />
               <br/>
               <div className="row">
@@ -79,12 +82,14 @@ class Game extends Component {
                         teamId={this.props.game.awayTeamId}
                         gameId={this.props.game.gameId}
                         type='away'
+                        picks={awayPicks.filter(p => p.pos === "G")}
                       />
                       <GoalieList
                         goalies={this.props.game.homeGoalies}
                         teamId={this.props.game.homeTeamId}
                         gameId={this.props.game.gameId}
                         type='home'
+                        picks={homePicks.filter(p => p.pos === "G")}
                       />
                     </tbody>
                   </table>
@@ -99,6 +104,7 @@ class Game extends Component {
                     teamId={this.props.game.awayTeamId}
                     gameId={this.props.game.gameId}
                     type='away'
+                    picks={awayPicks.filter(p => p.pos !== "G")}
                   />
                   <br/>
                   <SkaterList
@@ -106,19 +112,20 @@ class Game extends Component {
                     teamId={this.props.game.homeTeamId}
                     gameId={this.props.game.gameId}
                     type='home'
+                    picks={homePicks.filter(p => p.pos !== "G")}
                   />
                 </div>
               </Collapse>
             </div>
           </Collapse>
         :
-          allPicks.length > 0 ?
+          this.props.picks.length > 0 ?
             <Collapse in={this.state.expandFirst}>
               <div className="row">
                 <div className="col-xs-12 col-sm-6 col-md-4">
                   <table className="table">
                     <tbody>
-                      {allPicks.map((pick, index) => {
+                      {this.props.picks.sort((a,b) => a.team - b.team || a.jersey - b.jersey).map((pick, index) => {
                         return (
                           <PickedPlayer
                             key={index}

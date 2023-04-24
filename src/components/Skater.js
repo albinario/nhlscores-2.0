@@ -59,7 +59,7 @@ class Skater extends Component {
     return (
       <tr>
         <td>{this.state.jersey}</td>
-        <td className="text-left"><span className="hidden-xs">{this.state.fullName}</span><span className="hidden-sm hidden-md hidden-lg">{this.state.lastName}</span> <span className="pick">{Feed.isPicked(this.props.skaterId)}</span></td>
+        <td className="text-left"><span className="hidden-xs">{this.state.fullName}</span><span className="hidden-sm hidden-md hidden-lg">{this.state.lastName}</span> <span className="pick">{this.props.pickedBy}</span></td>
         <td>{this.state.goals}</td>
         <td>{this.state.assists}</td>
         <td className={plusClass}>{(this.state.plusMinus > 0) && '+'}{this.state.plusMinus}</td>

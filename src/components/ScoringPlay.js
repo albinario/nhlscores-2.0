@@ -48,13 +48,17 @@ class ScoringPlay extends Component {
     return (
       <div className="row">
         <div className="col-xs-2 col-sm-1 text-right scoring-play">{this.state.period !== 'SO' && this.state.goalsHome+'-'+this.state.goalsAway}</div>
-        <div className="col-xs-10 col-sm-11"><img src={Feed.getLogo(this.state.teamId)} className="img-small" alt="" />{this.state.periodTime !== '00:00' && this.state.periodTime} <span className="small">{this.state.period} – <em>{this.state.gwg && 'GWG '}{this.state.eng && 'ENG '}{this.state.strength && this.state.strength+' '}</em></span>{this.state.players.map((p, index) => {
-          const isPicked = Feed.isPicked(p.player.id);
-          const className = (isPicked ? 'pick' : null);
+        <div className="col-xs-10 col-sm-11"><img src={Feed.getLogo(this.state.teamId)} className="img-small" alt="" />{this.state.periodTime !== '00:00' && this.state.periodTime} <span className="small">{this.state.period} - <em>{this.state.gwg && 'GWG '}{this.state.eng && 'ENG '}{this.state.strength && this.state.strength+' '}</em></span>{this.state.players.map((player, index) => {
+          let pickedBy = ""
+          if (this.props.picks.find(p => p.id === player.player.id)) {
+            pickedBy = this.props.picks.find(p => p.id === player.player.id).picker
+          }
+          const className = (pickedBy ? 'pick' : null);
+          const pickedByText = (pickedBy ? ' '+pickedBy : "");
           l--;
           return (
             <span key={index} className={className}>
-              {p.player.fullName}{this.state.period !== 'SO' && ' ('+p.seasonTotal+')'+isPicked+(l ? ', ' : '')}
+              {player.player.fullName}{this.state.period !== 'SO' && ' ('+player.seasonTotal+')'+pickedByText+(l ? ', ' : '')}
             </span>
           );
         })}</div>

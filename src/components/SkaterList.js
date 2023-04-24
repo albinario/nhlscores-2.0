@@ -27,6 +27,10 @@ class SkaterList extends Component {
               {
                 this.props.skaters.map(skaters => {
                   return skaters.map((skaterId, index) => {
+                    let pickedBy = ""
+                    if (this.props.picks.find(p => p.id === skaterId)) {
+                      pickedBy = this.props.picks.find(p => p.id === skaterId).picker
+                    }
                     return (
                       <Skater
                         key={index}
@@ -34,6 +38,7 @@ class SkaterList extends Component {
                         teamId={this.props.teamId}
                         gameId={this.props.gameId}
                         type={this.props.type}
+                        pickedBy={pickedBy}
                       />
                     )
                   })

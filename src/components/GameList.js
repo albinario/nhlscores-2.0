@@ -7,10 +7,12 @@ class GameList extends Component {
     return (
       this.props.games ?
         this.props.games.map((game, index) => {
+          const picks = this.props.picks.filter(p => p.team === game.homeTeamId || p.team === game.awayTeamId)
           return (
             <Game
               key={index}
               game={game}
+              picks={picks}
             />
           );
         })

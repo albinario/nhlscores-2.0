@@ -60,7 +60,11 @@ class Goalie extends Component {
       <tr>
         <td className=""><img src={Feed.getLogo(this.props.teamId)} className="img-small" alt="" /></td>
         <td>{this.state.jersey}</td>
-        <td className="text-left"><span className="hidden-xs hidden-sm">{this.state.fullName}</span><span className="hidden-md hidden-lg">{this.state.lastName}</span> {this.state.decision} <span className="pick">{Feed.isPicked(this.props.goalieId)}</span></td>
+        <td className="text-left">
+          <span className="hidden-xs hidden-sm">{this.state.fullName}</span>
+          <span className="hidden-md hidden-lg">{this.state.lastName}</span> {this.state.decision}
+          <span className="pick">{this.props.pickedBy}</span>
+        </td>
         <td>{this.state.saves}/{this.state.shots}</td>
         <td className="hidden-5 hidden-6">{this.state.savePercentage}</td>
         <td className="hidden-5 hidden-6">{this.state.savesPP}/{this.state.shotsPP}</td>

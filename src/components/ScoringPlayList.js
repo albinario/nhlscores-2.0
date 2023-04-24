@@ -12,6 +12,7 @@ class ScoringPlayList extends Component {
               key={index}
               scoringPlayId={scoringPlayId}
               gameId={this.props.gameId}
+              picks={this.props.picks}
             />
           )
         })
