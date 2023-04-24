@@ -1,96 +1,86 @@
 body {
-  background-color: #2d2d2d;
+	background-color: #2d2d2d;
 }
 
 h2 {
-  margin: 0;
+	margin: 0;
 }
 
 .header {
-  margin: 20px 0;
-  font-size: 20px;
-  color: #eee;
+	margin: 20px 0;
+	font-size: 20px;
+	color: #eee;
 }
 
 .well {
-  background-color: #eee;
+	background-color: #eee;
 }
 
 .pick, .bold {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .assist {
-  font-size: .8em;
+	font-size: .8em;
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-  padding: 0px;
-  border: none;
+	padding: 0px;
+	border: none;
 }
 
 img {
-  height: 25px;
+	height: 25px;
 }
 
 .img-small {
-  height: 15px;
-  margin-bottom: 2px;
+	height: 15px;
+	margin-bottom: 2px;
 }
 
 .img-mgl {
-  margin-left: 5px;
+	margin-left: 5px;
 }
 
 .img-mgr {
-  margin-right: 5px;
+	margin-right: 5px;
 }
 
 .label-default {
-  background-color: #eee;
-  color: #333;
-  border: 1px solid #ccc;
+	background-color: #eee;
+	color: #333;
+	border: 1px solid #ccc;
 }
 
 .btn-default {
-  background-color: #eee;
+	background-color: #eee;
 }
 
 .green {
-  color: green;
+	color: green;
 }
 
 .red {
-  color: red;
+	color: red;
 }
 
 .white {
-  color: white;
+	color: white;
 }
 
 /* @media (max-width: 767px) { */
 @media (max-width: 320px) {
-  .hidden-5 {
-    display: none !important;
-  }
+	.hidden-5 {
+		display: none !important;
+	}
 }
 @media (min-width: 321px) and (max-width: 415px) {
-  .hidden-6 {
-    display: none !important;
-  }
+	.hidden-6 {
+		display: none !important;
+	}
 }
 @media (min-width: 416px) {
-  .hidden-7up {
-    display: none !important;
-  }
+	.hidden-7up {
+		display: none !important;
+	}
 }
-/* @media (min-width: 992px) and (max-width: 1199px) {
-  .hidden-md {
-    display: none !important;
-  }
-}
-@media (min-width: 1200px) {
-  .hidden-lg {
-    display: none !important;
-  }
-} */
