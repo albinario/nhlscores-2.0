@@ -1,1 +1,1 @@
-This app is built using the NHL OPEN API
+This app is built using the NHL OPEN API and is running here: http://nhlscores.surge.sh
